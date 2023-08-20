@@ -1,0 +1,38 @@
+.w-33{
+  width: 33%;
+}
+.w-16{
+  width: 16.5%;
+}
+.speed-button {
+  width: 100px;
+  height: 100px;
+  border: 20px solid #cc0000;
+  background-color: white;
+  color: black;
+  border-radius: 50%;
+  font-size: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-option {
+  border: 1px solid #ced4da;
+  padding: 0;
+  position: relative;
+}
+
+.btn-option img {
+  width: 100%;
+  height: auto;
+}
+
+.btn-option input[type="radio"] {
+  /*display: none;*/
+}
+
+.btn-option input[type="radio"]:checked + img {
+  border: 2px solid #cc0000;
+  padding: 8px;
+}

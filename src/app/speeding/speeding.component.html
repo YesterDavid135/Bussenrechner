@@ -1,0 +1,58 @@
+<div class="container-fluid py-3">
+  <h3>Strassentyp</h3>
+  <div class="row">
+    <div class="col d-flex justify-content-between">
+      <label class="btn btn-option btn-outline-secondary w-50">
+        <input [(ngModel)]="roadType" type="radio" name="roadType" value="innerorts" class="d-none">
+        <img src="assets/Innerorts.svg" class="img-fluid" alt="Innerorts">
+      </label>
+      <label class="btn btn-option btn-outline-secondary w-50">
+        <input [(ngModel)]="roadType" type="radio" name="roadType" value="ausserorts" class="d-none">
+        <img src="assets/Ausserorts.svg" class="img-fluid" alt="Ausserorts">
+      </label>
+      <label class="btn btn-option btn-outline-secondary w-25">
+        <input [(ngModel)]="roadType" type="radio" name="roadType" value="autostrasse" class="d-none">
+        <img src="assets/Autostrasse.svg" class="img-fluid" alt="Autostrasse">
+      </label>
+      <label class="btn btn-option btn-outline-secondary w-25">
+        <input [(ngModel)]="roadType" type="radio" name="roadType" value="autobahn" class="d-none">
+        <img src="assets/Autobahn.svg" class="img-fluid" alt="Autobahn">
+      </label>
+    </div>
+  </div>
+  <ng-container *ngIf="roadType">
+    <h3>Geschwindigkeitsbegrenzung</h3>
+    <div class="row" style="overflow-x: auto;">
+      <div class="col d-flex flex-nowrap">
+        <div class="d-flex justify-content-between" *ngFor="let limit of getAvailableSpeeds()">
+          <button (click)="speedLimit = limit" class="speed-button">{{limit}}</button>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="this.speedLimit > 0">
+    <h3>Blitzer art</h3>
+    <div class="row">
+      <div class="col d-flex justify-content-between">
+        <button class="btn btn-secondary">Radar<br>Schwellendetektoren<br>Abschnittskontrolle</button>
+        <button class="btn btn-secondary">Laser</button>
+        <button class="btn btn-secondary">Mobiler Radar</button>
+      </div>
+    </div>
+  </ng-container>
+  <h3>Gefahrene Geschwindigkeit</h3>
+  <div class="row">
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon1">km/h</span>
+      </div>
+      <input type="number" class="form-control" placeholder="Geschwindigkeit">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col d-flex justify-content-center">
+      <button class="btn btn-primary">Berechnen</button>
+    </div>
+  </div>
+</div>
+
