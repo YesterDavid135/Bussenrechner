@@ -6,13 +6,15 @@ import { SpeedingComponent } from './speeding/speeding.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NavbarComponent } from './navbar/navbar.component';
 import {FormsModule} from "@angular/forms";
+import { FooterComponent } from './footer/footer.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     SpeedingComponent,
-    NavbarComponent
+    NavbarComponent,
+    FooterComponent
   ],
     imports: [
         BrowserModule,
