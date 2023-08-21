@@ -16,7 +16,9 @@
   align-items: center;
   justify-content: center;
   margin: 5px;
+  flex-shrink: 0;
 }
+
 
 .btn-option {
   border: 1px solid #ced4da;

@@ -3,19 +3,19 @@
     <h3>Strassentyp</h3>
     <div class="row">
       <div class="col d-flex justify-content-center">
-        <label class="btn btn-option btn-outline-secondary" [class.active]="roadType === 'innerorts'">
+        <label class="btn btn-option btn-outline-secondary m-1" [class.active]="roadType === 'innerorts'">
           <input [(ngModel)]="roadType" type="radio" name="roadType" value="innerorts" class="d-none">
           <img src="assets/Innerorts.svg" class="img-fluid" alt="Innerorts">
         </label>
-        <label class="btn btn-option btn-outline-secondary" [class.active]="roadType === 'ausserorts'">
+        <label class="btn btn-option btn-outline-secondary m-1" [class.active]="roadType === 'ausserorts'">
           <input [(ngModel)]="roadType" type="radio" name="roadType" value="ausserorts" class="d-none">
           <img src="assets/Ausserorts.svg" class="img-fluid" alt="Ausserorts">
         </label>
-        <label class="btn btn-option btn-outline-secondary" [class.active]="roadType === 'autostrasse'">
+        <label class="btn btn-option btn-outline-secondary m-1" [class.active]="roadType === 'autostrasse'">
           <input [(ngModel)]="roadType" type="radio" name="roadType" value="autostrasse" class="d-none">
           <img src="assets/Autostrasse.svg" class="img-fluid" alt="Autostrasse">
         </label>
-        <label class="btn btn-option btn-outline-secondary" [class.active]="roadType === 'autobahn'">
+        <label class="btn btn-option btn-outline-secondary m-1" [class.active]="roadType === 'autobahn'">
           <input [(ngModel)]="roadType" type="radio" name="roadType" value="autobahn" class="d-none">
           <img src="assets/Autobahn.svg" class="img-fluid" alt="Autobahn">
         </label>
@@ -25,15 +25,17 @@
       <h3>Geschwindigkeitsbegrenzung</h3>
       <div class="row" style="overflow-x: auto;">
         <div class="col d-flex flex-nowrap justify-content-center">
-          <div class="d-flex justify-content-between"
-
-               *ngFor="let limit of getAvailableSpeeds()">
-            <label class="speed-button m-1" [class.active]="speedLimit === limit"> {{limit}}
+          <div class="d-flex justify-content-between" style="flex-wrap: nowrap; overflow-x: auto;">
+            <label class="speed-button" [class.active]="speedLimit === limit" *ngFor="let limit of getAvailableSpeeds()">
+              {{limit}}
               <input type="radio" name="speedLimit" class="d-none" [value]="limit" [(ngModel)]="speedLimit">
             </label>
           </div>
         </div>
       </div>
+
+
+
 
 
     </ng-container>
