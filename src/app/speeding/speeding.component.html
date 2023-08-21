@@ -1,116 +1,128 @@
-<div class="container-fluid py-3">
-  <h3>Strassentyp</h3>
-  <div class="row">
-    <div class="col d-flex justify-content-center">
-      <label class="btn btn-option btn-outline-secondary" [class.active]="roadType === 'innerorts'">
-        <input [(ngModel)]="roadType" type="radio" name="roadType" value="innerorts" class="d-none">
-        <img src="assets/Innerorts.svg" class="img-fluid" alt="Innerorts">
-      </label>
-      <label class="btn btn-option btn-outline-secondary" [class.active]="roadType === 'ausserorts'">
-        <input [(ngModel)]="roadType" type="radio" name="roadType" value="ausserorts" class="d-none">
-        <img src="assets/Ausserorts.svg" class="img-fluid" alt="Ausserorts">
-      </label>
-      <label class="btn btn-option btn-outline-secondary" [class.active]="roadType === 'autostrasse'">
-        <input [(ngModel)]="roadType" type="radio" name="roadType" value="autostrasse" class="d-none">
-        <img src="assets/Autostrasse.svg" class="img-fluid" alt="Autostrasse">
-      </label>
-      <label class="btn btn-option btn-outline-secondary" [class.active]="roadType === 'autobahn'">
-        <input [(ngModel)]="roadType" type="radio" name="roadType" value="autobahn" class="d-none">
-        <img src="assets/Autobahn.svg" class="img-fluid" alt="Autobahn">
-      </label>
-    </div>
-  </div>
-  <ng-container *ngIf="roadType">
-    <h3>Geschwindigkeitsbegrenzung</h3>
-    <div class="row" style="overflow-x: auto;">
-      <div class="col d-flex flex-nowrap justify-content-center">
-        <div class="d-flex justify-content-between" *ngFor="let limit of getAvailableSpeeds()">
-          <label class="speed-button" [class.active]="speedLimit === limit"> {{limit}}
-            <input type="radio" name="speedLimit" class="d-none" [value]="limit" [(ngModel)]="speedLimit">
-          </label>
-        </div>
+<section class="pt-4">
+  <div class="container px-lg-5">
+    <h3>Strassentyp</h3>
+    <div class="row">
+      <div class="col d-flex justify-content-center">
+        <label class="btn btn-option btn-outline-secondary" [class.active]="roadType === 'innerorts'">
+          <input [(ngModel)]="roadType" type="radio" name="roadType" value="innerorts" class="d-none">
+          <img src="assets/Innerorts.svg" class="img-fluid" alt="Innerorts">
+        </label>
+        <label class="btn btn-option btn-outline-secondary" [class.active]="roadType === 'ausserorts'">
+          <input [(ngModel)]="roadType" type="radio" name="roadType" value="ausserorts" class="d-none">
+          <img src="assets/Ausserorts.svg" class="img-fluid" alt="Ausserorts">
+        </label>
+        <label class="btn btn-option btn-outline-secondary" [class.active]="roadType === 'autostrasse'">
+          <input [(ngModel)]="roadType" type="radio" name="roadType" value="autostrasse" class="d-none">
+          <img src="assets/Autostrasse.svg" class="img-fluid" alt="Autostrasse">
+        </label>
+        <label class="btn btn-option btn-outline-secondary" [class.active]="roadType === 'autobahn'">
+          <input [(ngModel)]="roadType" type="radio" name="roadType" value="autobahn" class="d-none">
+          <img src="assets/Autobahn.svg" class="img-fluid" alt="Autobahn">
+        </label>
       </div>
     </div>
-  </ng-container>
-  <ng-container *ngIf="speedLimit > 0">
-    <h3>Blitzer art</h3>
-    <div class="row">
-      <div class="col d-flex justify-content-between">
-        <label class="btn btn-secondary" [class.active]="type === 'radar'">
-          Radar
-          <input [(ngModel)]="type" type="radio" name="type" class="d-none" value="radar">
-        </label>
-        <label class="btn btn-secondary" [class.active]="type === 'section'">
-          Abschnittskontrolle
-          <input [(ngModel)]="type" type="radio" name="type" class="d-none" value="section">
-        </label>
-        <label class="btn btn-secondary" [class.active]="type === 'laser'">
+    <ng-container *ngIf="roadType">
+      <h3>Geschwindigkeitsbegrenzung</h3>
+      <div class="row" style="overflow-x: auto;">
+        <div class="col d-flex flex-nowrap justify-content-center">
+          <div class="d-flex justify-content-between"
+               style="margin: 0 5px; padding-right: 10px;"
+               *ngFor="let limit of getAvailableSpeeds()">
+            <label class="speed-button" [class.active]="speedLimit === limit"> {{limit}}
+              <input type="radio" name="speedLimit" class="d-none" [value]="limit" [(ngModel)]="speedLimit">
+            </label>
+          </div>
+        </div>
+      </div>
+
+
+    </ng-container>
+    <ng-container *ngIf="speedLimit > 0">
+      <h3>Blitzer art</h3>
+      <div class="row">
+        <div class="col d-flex justify-content-between">
+          <label class="btn btn-secondary" [class.active]="type === 'radar'">
+            Radar
+            <input [(ngModel)]="type" type="radio" name="type" class="d-none" value="radar">
+          </label><label class="btn btn-secondary" [class.active]="type === 'laser'">
           Laser
           <input [(ngModel)]="type" type="radio" name="type" class="d-none" value="laser">
         </label>
-        <label class="btn btn-secondary" [class.active]="type === 'curve'">
-          Kurvenradar
-          <input [(ngModel)]="type" type="radio" name="type" class="d-none" value="curve">
-        </label>
-      </div>
-    </div>
-  </ng-container>
-  <ng-container *ngIf="type && speedLimit">
-    <h3>Gefahrene Geschwindigkeit</h3>
-    <div class="row">
-      <div class="input-group mb-3">
-        <div class="input-group-prepend">
-          <span class="input-group-text" id="basic-addon1">km/h</span>
-        </div>
-        <input [(ngModel)]="speed" type="number" class="form-control" placeholder="Geschwindigkeit">
-      </div>
-    </div>
-  </ng-container>
-  <ng-container *ngIf="speedLimit && type && speed">
-    <div class="row">
-      <div class="col d-flex justify-content-center">
-        <button class="btn btn-primary" (click)="calculate()">Berechnen</button>
-      </div>
-    </div>
-  </ng-container>
-  <div *ngIf="tolerance">
-    <h3>Toleranzabzug</h3>
-    <div class="justify-content-center">
-      <div>
-        <div class="row">
-          <div class="col-2">Gemessene Geschwindigkeit</div>
-          <div class="col-1">{{speed}}</div>
-          <div class="col-1">km/h</div>
-        </div>
-        <div class="row">
-          <div class="col-2">Abzug der Sicherheitsmage</div>
-          <div class="col-1">-{{tolerance}}</div>
-          <div class="col-1">km/h</div>
-        </div>
-        <div class="row">
-          <div class="col-2">Massgebende Geschwindigkeit</div>
-          <div class="col-1">{{speed - tolerance}}</div>
-          <div class="col-1">km/h</div>
+          <label class="btn btn-secondary" [class.active]="type === 'section'">
+            Abschnittskontrolle
+            <input [(ngModel)]="type" type="radio" name="type" class="d-none" value="section">
+          </label>
+          <!--        <label class="btn btn-secondary" [class.active]="type === 'curve'">-->
+          <!--          Kurvenradar-->
+          <!--          <input [(ngModel)]="type" type="radio" name="type" class="d-none" value="curve">-->
+          <!--        </label>-->
         </div>
       </div>
-      <div>
-        <div class="row">
-          <div class="col-2">Massgebende Geschwindigkeit</div>
-          <div class="col-1">{{speed - tolerance}}</div>
-          <div class="col-1">km/h</div>
+    </ng-container>
+    <ng-container *ngIf="type && speedLimit">
+      <h3>Gefahrene Geschwindigkeit</h3>
+      <div class="row">
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">km/h</span>
+          </div>
+          <input [(ngModel)]="speed" type="number" class="form-control" placeholder="Geschwindigkeit">
         </div>
+      </div>
+    </ng-container>
+    <!--  <ng-container *ngIf="speedLimit && type && speed">-->
+    <!--    <div class="row">-->
+    <!--      <div class="col d-flex justify-content-center">-->
+    <!--        <button class="btn btn-primary" (click)="calculate()">Berechnen</button>-->
+    <!--      </div>-->
+    <!--    </div>-->
+    <!--  </ng-container>-->
+
+    <div *ngIf="speedLimit && type && speed">
+      <hr>
+      <div class="alert-danger alert" *ngIf="getTransgessionPhase() != '0'">
         <div class="row">
-          <div class="col-2">Abzug der Geschwindigkeitsbegrenzug</div>
-          <div class="col-1">{{speedLimit}}</div>
-          <div class="col-1">km/h</div>
+          <div class="col">Überschreiten der Höchstgeschwindigkeit um {{getTransgessionPhase()}} km/h</div>
+          <div class="col">{{getFine()}}</div>
         </div>
-        <div class="row strong">
-          <div class="col-2">Geschwindigkeitsüberschreitung</div>
-          <div class="col-1">{{speed - tolerance - speedLimit}}</div>
-          <div class="col-1">km/h</div>
+      </div>
+      <div class="alert-success alert justify-content-center" *ngIf="getTransgessionPhase() === '0'">
+        Keinen Verstoss festgestellt
+      </div>
+      <h3>Toleranzabzug</h3>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="row">
+              <div class="col">Gemessene Geschwindigkeit</div>
+              <div class="col">{{ speed }} km/h</div>
+            </div>
+            <div class="row">
+              <div class="col">Abzug der Sicherheitsmage</div>
+              <div class="col">-{{ getTolerance() }} km/h</div>
+            </div>
+            <div class="row">
+              <div class="col">Massgebende Geschwindigkeit</div>
+              <div class="col">{{ speed - getTolerance() }} km/h</div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="row">
+              <div class="col">Massgebende Geschwindigkeit</div>
+              <div class="col">{{ speed - getTolerance() }} km/h</div>
+            </div>
+            <div class="row">
+              <div class="col">Abzug der Geschwindigkeitsbegrenzung</div>
+              <div class="col">{{ speedLimit }} km/h</div>
+            </div>
+            <div class="row fw-bold">
+              <div class="col">Geschwindigkeitsüberschreitung</div>
+              <div class="col">{{ getTransgessionSpeed() }} km/h</div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 
+</section>
