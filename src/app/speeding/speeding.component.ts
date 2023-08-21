@@ -149,7 +149,7 @@ export class SpeedingComponent {
           case "21-25":
             return "Anzeige / Verwarnung"
           case "26-30":
-            return "1 Monate Entzug (mindestens)"
+            return "1 Monat Entzug (mindestens)"
           default:
             return "3 Monate Entzug (mindestens)"
         }
@@ -170,7 +170,7 @@ export class SpeedingComponent {
           case "26-30":
             return "Anzeige / Verwarnung"
           case "31-35":
-            return "1 Monate Entzug (mindestens)"
+            return "1 Monat Entzug (mindestens)"
           default:
             return "3 Monate Entzug (mindestens)"
         }

@@ -68,7 +68,7 @@
           <div class="input-group-prepend">
             <span class="input-group-text" id="basic-addon1">km/h</span>
           </div>
-          <input [(ngModel)]="speed" type="number" class="form-control" placeholder="Geschwindigkeit">
+          <input [(ngModel)]="speed" type="tel" class="form-control" placeholder="Geschwindigkeit">
         </div>
       </div>
     </ng-container>
@@ -91,35 +91,32 @@
       <div class="alert-success alert justify-content-center" *ngIf="getTransgessionPhase() === '0'">
         Keinen Verstoss festgestellt
       </div>
-      <h3>Toleranzabzug</h3>
+      <h3>Berechnung</h3>
       <div class="container">
         <div class="row">
           <div class="col-md-6">
             <div class="row">
-              <div class="col">Gemessene Geschwindigkeit</div>
-              <div class="col">{{ speed }} km/h</div>
+              <small class="col">Gemessene Geschwindigkeit</small>
+              <small class="col">{{ speed }} km/h</small>
             </div>
             <div class="row">
-              <div class="col">Abzug der Sicherheitsmage</div>
-              <div class="col">-{{ getTolerance() }} km/h</div>
+              <small class="col">Abzug der Sicherheitsmage</small>
+              <small class="col">-{{ getTolerance() }} km/h</small>
             </div>
             <div class="row">
-              <div class="col">Massgebende Geschwindigkeit</div>
-              <div class="col">{{ speed - getTolerance() }} km/h</div>
+              <small class="col">Massgebende Geschwindigkeit</small>
+              <small class="col">{{ speed - getTolerance() }} km/h</small>
             </div>
           </div>
           <div class="col-md-6">
+
             <div class="row">
-              <div class="col">Massgebende Geschwindigkeit</div>
-              <div class="col">{{ speed - getTolerance() }} km/h</div>
-            </div>
-            <div class="row">
-              <div class="col">Abzug der Geschwindigkeitsbegrenzung</div>
-              <div class="col">{{ speedLimit }} km/h</div>
+              <small class="col">Abzug der Geschwindigkeitsbegrenzung</small>
+              <small class="col">{{ speedLimit }} km/h</small>
             </div>
             <div class="row fw-bold">
-              <div class="col">Geschwindigkeitsüberschreitung</div>
-              <div class="col">{{ getTransgessionSpeed() }} km/h</div>
+              <small class="col">Geschwindigkeitsüberschreitung</small>
+              <small class="col">{{ getTransgessionSpeed() }} km/h</small>
             </div>
           </div>
         </div>
