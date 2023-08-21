@@ -15,6 +15,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  margin: 5px;
 }
 
 .btn-option {
@@ -24,8 +25,9 @@
 }
 
 .btn-option img {
-  width: 100%;
+  width: auto;
   height: auto;
+  max-height: 100px;
 }
 
 .btn-option input[type="radio"] {
@@ -33,6 +35,13 @@
 }
 
 .btn-option input[type="radio"]:checked + img {
-  border: 2px solid #cc0000;
   padding: 8px;
+}
+.active {
+  border-color: #1d4e86;
+  background-color: #1d4e86;
+}
+.speed-button.active{
+  border-color: #1d4e86;
+  background-color: #ffffff;
 }
