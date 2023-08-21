@@ -26,9 +26,9 @@
       <div class="row" style="overflow-x: auto;">
         <div class="col d-flex flex-nowrap justify-content-center">
           <div class="d-flex justify-content-between"
-               style="margin: 0 5px; padding-right: 10px;"
+
                *ngFor="let limit of getAvailableSpeeds()">
-            <label class="speed-button" [class.active]="speedLimit === limit"> {{limit}}
+            <label class="speed-button m-1" [class.active]="speedLimit === limit"> {{limit}}
               <input type="radio" name="speedLimit" class="d-none" [value]="limit" [(ngModel)]="speedLimit">
             </label>
           </div>
@@ -40,15 +40,15 @@
     <ng-container *ngIf="speedLimit > 0">
       <h3>Blitzer art</h3>
       <div class="row">
-        <div class="col d-flex justify-content-between">
-          <label class="btn btn-secondary" [class.active]="type === 'radar'">
+        <div class="col d-flex justify-content-center">
+          <label class="btn btn-secondary m-1" [class.active]="type === 'radar'">
             Radar
             <input [(ngModel)]="type" type="radio" name="type" class="d-none" value="radar">
-          </label><label class="btn btn-secondary" [class.active]="type === 'laser'">
+          </label><label class="btn btn-secondary m-1" [class.active]="type === 'laser'">
           Laser
           <input [(ngModel)]="type" type="radio" name="type" class="d-none" value="laser">
         </label>
-          <label class="btn btn-secondary" [class.active]="type === 'section'">
+          <label class="btn btn-secondary m-1" [class.active]="type === 'section'">
             Abschnittskontrolle
             <input [(ngModel)]="type" type="radio" name="type" class="d-none" value="section">
           </label>
