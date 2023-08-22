@@ -3,19 +3,19 @@
     <h3>Strassentyp</h3>
     <div class="row">
       <div class="col d-flex justify-content-center">
-        <label class="btn btn-option btn-outline-secondary m-1" [class.active]="roadType === 'innerorts'">
+        <label class="btn btn-option btn-outline-secondary m-1" [class.active]="roadType === 'innerorts'" ngbTooltip="Innerorts">
           <input [(ngModel)]="roadType" type="radio" name="roadType" value="innerorts" class="d-none">
           <img src="assets/Innerorts.svg" class="img-fluid" alt="Innerorts">
         </label>
-        <label class="btn btn-option btn-outline-secondary m-1" [class.active]="roadType === 'ausserorts'">
+        <label class="btn btn-option btn-outline-secondary m-1" [class.active]="roadType === 'ausserorts'" ngbTooltip="Ausserorts">
           <input [(ngModel)]="roadType" type="radio" name="roadType" value="ausserorts" class="d-none">
           <img src="assets/Ausserorts.svg" class="img-fluid" alt="Ausserorts">
         </label>
-        <label class="btn btn-option btn-outline-secondary m-1" [class.active]="roadType === 'autostrasse'">
+        <label class="btn btn-option btn-outline-secondary m-1" [class.active]="roadType === 'autostrasse'" ngbTooltip="Autostrasse">
           <input [(ngModel)]="roadType" type="radio" name="roadType" value="autostrasse" class="d-none">
           <img src="assets/Autostrasse.svg" class="img-fluid" alt="Autostrasse">
         </label>
-        <label class="btn btn-option btn-outline-secondary m-1" [class.active]="roadType === 'autobahn'">
+        <label class="btn btn-option btn-outline-secondary m-1" [class.active]="roadType === 'autobahn'" ngbTooltip="Autobahn">
           <input [(ngModel)]="roadType" type="radio" name="roadType" value="autobahn" class="d-none">
           <img src="assets/Autobahn.svg" class="img-fluid" alt="Autobahn">
         </label>
@@ -82,7 +82,11 @@
 
     <div *ngIf="speedLimit && type && speed">
       <hr>
-      <div class="alert-danger alert" *ngIf="getTransgessionPhase() != '0'">
+      <div class="alert"
+           [ngClass]="{'alert-warning': this.getFine().toString().startsWith('CHF'),
+           'alert-danger': !this.getFine().toString().startsWith('CHF')}"
+           *ngIf="getTransgessionPhase() != '0'">
+
         <div class="row">
           <div class="col">Überschreiten der Höchstgeschwindigkeit um {{getTransgessionPhase()}} km/h</div>
           <div class="col">{{getFine()}}</div>
