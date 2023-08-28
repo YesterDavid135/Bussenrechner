@@ -166,7 +166,7 @@ export class SpeedingComponent {
           case "16-20":
             return "CHF 180"
           case "21-25":
-            return "260"
+            return "CHF 260"
           case "26-30":
             return "Anzeige / Verwarnung"
           case "31-35":
